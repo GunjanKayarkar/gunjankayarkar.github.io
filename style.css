@@ -1,11 +1,11 @@
 :root {
-  --bg-color: #ffffff;
+  --bg-color: transparent;
   --text-color: #000000;
   --accent-color: #007acc;
 }
 
 [data-theme="dark"] {
-  --bg-color: #121212;
+  --bg-color: transparent;
   --text-color: #f0f0f0;
   --accent-color: #66ccff;
 }
@@ -23,7 +23,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
 header {
@@ -99,4 +99,60 @@ footer {
   footer {
     padding: 1rem;
   }
+}
+
+/* Hide stars in light mode */
+[data-theme="light"] .stars {
+  display: none;
+}
+
+/* === Parallax Starry Background === */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background-repeat: repeat;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Layer 1 – Small stars */
+.stars1 {
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 2px 2px;
+  opacity: 0.3;
+  animation: moveStars1 100s linear infinite;
+}
+
+/* Layer 2 – Medium stars */
+.stars2 {
+  background-image: radial-gradient(white 1.5px, transparent 1.5px);
+  background-size: 3px 3px;
+  opacity: 0.2;
+  animation: moveStars2 200s linear infinite;
+}
+
+/* Layer 3 – Large stars */
+.stars3 {
+  background-image: radial-gradient(white 2px, transparent 2px);
+  background-size: 4px 4px;
+  opacity: 0.1;
+  animation: moveStars3 300s linear infinite;
+}
+
+@keyframes moveStars1 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-50%, -50%); }
+}
+
+@keyframes moveStars2 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-30%, -30%); }
+}
+
+@keyframes moveStars3 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-10%, -10%); }
 }
