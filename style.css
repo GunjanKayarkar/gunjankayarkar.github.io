@@ -1,73 +1,52 @@
-:root {
-  --bg-color: #ffffff;
-  --dot-color: #000000;
-  --text-color: #000000;
-}
-
-[data-theme="dark"] {
-  --bg-color: #121212;
-  --dot-color: #ffffff;
-  --text-color: #ffffff;
-}
-
 body {
   margin: 0;
-  padding: 0;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: Arial, sans-serif;
-  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #1e1e1e;
+  color: white;
+  display: flex;
+  height: 100vh;
 }
 
-canvas#background {
+.sidebar {
+  width: 60px;
+  background-color: #252526;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.sidebar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.sidebar nav a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin: 10px 0;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.topbar {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
-/* Theme Toggle Styles */
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
+  left: 60px;
+  right: 0;
+  height: 60px;
+  background-color: #333333;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
   z-index: 1;
 }
 
-.theme-toggle input {
-  display: none;
-}
-
-.theme-toggle .slider {
-  width: 60px;
-  height: 30px;
-  background-color: #ccc;
-  display: block;
-  border-radius: 15px;
-  position: relative;
-  cursor: pointer;
-}
-
-.theme-toggle .slider::before {
-  content: '';
-  position: absolute;
-  width: 26px;
-  height: 26px;
-  background-color: #fff;
-  border-radius: 50%;
-  top: 2px;
-  left: 2px;
-  transition: 0.3s;
-}
-
-.theme-toggle input:checked + .slider::before {
-  transform: translateX(30px);
-}
-
-main {
-  position: relative;
-  z-index: 1;
-  padding: 100px 20px;
+.content {
+  margin-top: 60px;
+  margin-left: 60px;
+  padding: 20px;
+  overflow-y: auto;
 }
