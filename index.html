@@ -1,38 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Power BI Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>VS Code Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="sidebar">
-    <div class="logo">PB</div>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <div class="theme-toggle">
+    <label>
+      <input type="checkbox" id="modeSwitch" />
+      Light Mode
+    </label>
   </div>
-  <div class="topbar">
-    <h1>My Power BI Portfolio</h1>
-  </div>
-  <div class="content">
-    <section id="about">
-      <h2>About Me</h2>
-      <p>I’m a data analyst with a passion for visualization and storytelling using Power BI.</p>
-    </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <p>Sample dashboards, DAX scripts, and embedded visualizations.</p>
-    </section>
+  <div class="vscode-container">
+    <div class="sidebar">
+      <div class="icon">📁</div>
+      <div class="icon">🔍</div>
+      <div class="icon">🔃</div>
+      <div class="icon">🐞</div>
+    </div>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: you@example.com</p>
-    </section>
+    <div class="explorer">
+      <h3>EXPLORER</h3>
+      <ul>
+        <li onclick="showTab('about')">about.html</li>
+        <li onclick="showTab('projects')">projects.html</li>
+        <li onclick="showTab('contact')">contact.html</li>
+      </ul>
+    </div>
+
+    <div class="main">
+      <div class="tab-bar">
+        <div class="tab active" id="tab-about" onclick="showTab('about')">about.html</div>
+        <div class="tab" id="tab-projects" onclick="showTab('projects')">projects.html</div>
+        <div class="tab" id="tab-contact" onclick="showTab('contact')">contact.html</div>
+      </div>
+
+      <div class="editor">
+        <div class="tab-content active" id="content-about">
+          <h2>About Me</h2>
+          <p>I’m a developer passionate about building interactive web experiences and data tools.</p>
+        </div>
+        <div class="tab-content" id="content-projects">
+          <h2>Projects</h2>
+          <ul>
+            <li>Portfolio Website (this!)</li>
+            <li>Data Dashboard</li>
+            <li>Open-source Contributions</li>
+          </ul>
+        </div>
+        <div class="tab-content" id="content-contact">
+          <h2>Contact</h2>
+          <p>Email: your@email.com</p>
+          <p>GitHub: github.com/yourusername</p>
+        </div>
+      </div>
+
+      <div class="terminal">
+        <div class="terminal-header">TERMINAL</div>
+        <div class="terminal-body">
+          <p>Welcome to my portfolio terminal!</p>
+          <p>&gt; node intro.js</p>
+          <p>Hello, I am a full-stack developer 👋</p>
+        </div>
+      </div>
+    </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
