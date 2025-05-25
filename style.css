@@ -1,52 +1,142 @@
+:root {
+  --bg-color: #1e1e1e;
+  --sidebar-color: #333333;
+  --explorer-color: #252526;
+  --tab-bg: #252526;
+  --tab-active: #1e1e1e;
+  --text-color: #d4d4d4;
+  --accent-color: #007acc;
+  --terminal-bg: #1e1e1e;
+  --terminal-text: #c0c0c0;
+}
+
+body.light {
+  --bg-color: #f3f3f3;
+  --sidebar-color: #e1e1e1;
+  --explorer-color: #f0f0f0;
+  --tab-bg: #e0e0e0;
+  --tab-active: #ffffff;
+  --text-color: #222;
+  --accent-color: #0066cc;
+  --terminal-bg: #fafafa;
+  --terminal-text: #333;
+}
+
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #1e1e1e;
-  color: white;
+  font-family: 'Consolas', monospace;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.vscode-container {
   display: flex;
   height: 100vh;
 }
 
+.theme-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  font-size: 14px;
+}
+
 .sidebar {
-  width: 60px;
-  background-color: #252526;
+  width: 50px;
+  background-color: var(--sidebar-color);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
-.sidebar .logo {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
+.icon {
+  font-size: 20px;
+  margin: 20px 0;
+  cursor: pointer;
 }
 
-.sidebar nav a {
-  display: block;
-  color: white;
-  text-decoration: none;
-  margin: 10px 0;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
+.explorer {
+  width: 200px;
+  background-color: var(--explorer-color);
+  padding: 10px;
 }
 
-.topbar {
-  position: fixed;
-  top: 0;
-  left: 60px;
-  right: 0;
-  height: 60px;
-  background-color: #333333;
+.explorer h3 {
+  font-size: 12px;
+  color: var(--accent-color);
+  margin-bottom: 10px;
+}
+
+.explorer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.explorer li {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.explorer li:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.main {
+  flex-grow: 1;
   display: flex;
-  align-items: center;
-  padding-left: 20px;
-  z-index: 1;
+  flex-direction: column;
 }
 
-.content {
-  margin-top: 60px;
-  margin-left: 60px;
+.tab-bar {
+  display: flex;
+  background-color: var(--tab-bg);
+  border-bottom: 1px solid #333;
+}
+
+.tab {
+  padding: 10px;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.tab.active {
+  background-color: var(--tab-active);
+  border-top: 2px solid var(--accent-color);
+  color: white;
+}
+
+.editor {
   padding: 20px;
   overflow-y: auto;
+  flex-grow: 1;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.terminal {
+  background-color: var(--terminal-bg);
+  color: var(--terminal-text);
+  padding: 10px;
+  height: 150px;
+  font-size: 13px;
+  border-top: 1px solid #333;
+}
+
+.terminal-header {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: var(--accent-color);
+}
+
+.terminal-body {
+  white-space: pre-wrap;
 }
