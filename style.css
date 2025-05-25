@@ -1,72 +1,102 @@
 :root {
-    --bg-color: #ffffff;
-    --text-color: #000000;
-    --accent-color: #007acc;
-  }
-  
-  [data-theme="dark"] {
-    --bg-color: #121212;
-    --text-color: #f0f0f0;
-    --accent-color: #66ccff;
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    line-height: 1.6;
-  }
-  
-  header {
-    background: var(--bg-color);
-    padding: 1rem 2rem;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --accent-color: #007acc;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #f0f0f0;
+  --accent-color: #66ccff;
+}
+
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+header {
+  background: var(--bg-color);
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  padding-left: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+
+.section {
+  padding: 4rem 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem 2rem;
+  border-top: 1px solid #ccc;
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
   .nav-links {
-    display: flex;
-    gap: 1rem;
-    list-style: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
   }
-  
-  .nav-links a {
-    text-decoration: none;
-    color: var(--text-color);
-    transition: color 0.3s;
-  }
-  
-  .nav-links a:hover {
-    color: var(--accent-color);
-  }
-  
+
   .section {
-    padding: 4rem 2rem;
-    max-width: 900px;
-    margin: auto;
+    padding: 2rem 1rem;
   }
-  
+
+  header,
   footer {
-    text-align: center;
     padding: 1rem;
-    border-top: 1px solid #ccc;
   }
-  
-  #theme-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-  }
-  
+}
