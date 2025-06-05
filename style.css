@@ -1,30 +1,33 @@
 :root {
   --bg-color: #1e1e1e;
-  --sidebar-color: #333333;
+  --sidebar-color: #333;
   --explorer-color: #252526;
-  --tab-bg: #252526;
+  --tab-bg: #2d2d2d;
   --tab-active: #1e1e1e;
   --text-color: #d4d4d4;
   --accent-color: #007acc;
   --terminal-bg: #1e1e1e;
   --terminal-text: #c0c0c0;
+  --font: 'Fira Code', monospace;
+  --border-color: #3c3c3c;
 }
 
 body.light {
-  --bg-color: #f3f3f3;
-  --sidebar-color: #e1e1e1;
-  --explorer-color: #f0f0f0;
-  --tab-bg: #e0e0e0;
+  --bg-color: #ffffff;
+  --sidebar-color: #eeeeee;
+  --explorer-color: #f3f3f3;
+  --tab-bg: #e7e7e7;
   --tab-active: #ffffff;
-  --text-color: #222;
+  --text-color: #1e1e1e;
   --accent-color: #0066cc;
   --terminal-bg: #fafafa;
   --terminal-text: #333;
+  --border-color: #ccc;
 }
 
 body {
   margin: 0;
-  font-family: 'Consolas', monospace;
+  font-family: var(--font);
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: all 0.3s ease;
@@ -39,8 +42,12 @@ body {
   position: fixed;
   top: 10px;
   right: 10px;
-  z-index: 10;
+  z-index: 100;
   font-size: 14px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
 }
 
 .sidebar {
@@ -50,18 +57,27 @@ body {
   flex-direction: column;
   align-items: center;
   padding-top: 10px;
+  border-right: 1px solid var(--border-color);
 }
 
 .icon {
   font-size: 20px;
   margin: 20px 0;
   cursor: pointer;
+  color: var(--text-color);
+}
+
+.icon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 5px;
 }
 
 .explorer {
-  width: 200px;
+  width: 220px;
   background-color: var(--explorer-color);
   padding: 10px;
+  border-right: 1px solid var(--border-color);
 }
 
 .explorer h3 {
@@ -76,12 +92,15 @@ body {
 }
 
 .explorer li {
-  padding: 5px 10px;
+  padding: 6px 10px;
   cursor: pointer;
+  font-size: 13px;
+  color: var(--text-color);
+  border-radius: 3px;
 }
 
 .explorer li:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .main {
@@ -93,13 +112,15 @@ body {
 .tab-bar {
   display: flex;
   background-color: var(--tab-bg);
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .tab {
-  padding: 10px;
+  padding: 10px 15px;
   cursor: pointer;
   color: var(--text-color);
+  font-size: 13px;
+  border-right: 1px solid var(--border-color);
 }
 
 .tab.active {
@@ -112,6 +133,8 @@ body {
   padding: 20px;
   overflow-y: auto;
   flex-grow: 1;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 .tab-content {
@@ -122,13 +145,35 @@ body {
   display: block;
 }
 
+/* Skills Grid */
+.skills-container {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.skills-column {
+  flex: 1;
+}
+
+.skills-column ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.skills-column li {
+  margin: 6px 0;
+}
+
+/* Terminal */
 .terminal {
   background-color: var(--terminal-bg);
   color: var(--terminal-text);
   padding: 10px;
   height: 150px;
   font-size: 13px;
-  border-top: 1px solid #333;
+  border-top: 1px solid var(--border-color);
+  font-family: var(--font);
 }
 
 .terminal-header {
