@@ -86,6 +86,8 @@ body {
   height: 18px;
   pointer-events: none;
   flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .toggle-label .moon {
@@ -95,6 +97,23 @@ body {
 .toggle-label .sun {
   margin-left: 8px;
   color: #f39c12; /* gold/yellow color for sun */
+}
+
+/* Show only the icon representing current mode */
+body:not(.light) .toggle-label .moon {
+  opacity: 1;
+}
+
+body:not(.light) .toggle-label .sun {
+  opacity: 0;
+}
+
+body.light .toggle-label .sun {
+  opacity: 1;
+}
+
+body.light .toggle-label .moon {
+  opacity: 0;
 }
 
 .toggle-slider {
@@ -175,12 +194,19 @@ body {
   font-size: 13px;
   border-right: 1px solid var(--border-color);
   user-select: none;
+  transition: color 0.3s ease;
 }
 
+/* Dark mode active tab text color */
 .tab.active {
   background-color: var(--tab-active);
   border-top: 2px solid var(--accent-color);
   color: white;
+}
+
+/* Light mode active tab text color fix */
+body.light .tab.active {
+  color: var(--accent-color);
 }
 
 .editor {
