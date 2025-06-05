@@ -31,6 +31,8 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: all 0.3s ease;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .vscode-container {
@@ -38,105 +40,77 @@ body {
   height: 100vh;
 }
 
-/* THEME TOGGLE SLIDER STYLE */
 .theme-toggle {
   position: fixed;
   top: 10px;
   right: 10px;
   z-index: 100;
+  user-select: none;
 }
 
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 24px;
+/* Slider Toggle */
+
+.theme-toggle input[type="checkbox"] {
+  display: none;
 }
 
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-  position: absolute;
-}
-
-.slider {
-  position: relative;
-  cursor: pointer;
-  background-color: var(--sidebar-color);
-  border-radius: 24px;
-  height: 100%;
+.theme-toggle .toggle-label {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  width: 60px;
+  height: 28px;
+  background-color: var(--sidebar-color);
+  border-radius: 14px;
+  cursor: pointer;
+  position: relative;
   padding: 0 6px;
   box-sizing: border-box;
-  transition: background-color 0.3s ease;
 }
 
-.slider .icon {
-  width: 16px;
-  height: 16px;
-  stroke: currentColor;
-  stroke-width: 2;
+.theme-toggle .toggle-label .icon {
   color: var(--text-color);
-  user-select: none;
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
   pointer-events: none;
+  user-select: none;
+  transition: color 0.3s ease;
 }
 
-/* The toggle thumb */
-.slider::before {
-  content: "";
+.theme-toggle .toggle-label .moon {
+  order: 1;
+}
+
+.theme-toggle .toggle-label .sun {
+  order: 3;
+}
+
+.theme-toggle .toggle-label .slider {
   position: absolute;
-  height: 18px;
-  width: 18px;
+  top: 3px;
   left: 3px;
-  bottom: 3px;
-  background-color: var(--text-color);
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-  box-shadow: 0 0 2px rgba(0,0,0,0.5);
-}
-
-/* Move thumb when checked */
-input:checked + .slider::before {
-  transform: translateX(26px);
-}
-
-/* Background color changes with mode */
-input:checked + .slider {
+  width: 22px;
+  height: 22px;
   background-color: var(--accent-color);
-  color: white;
+  border-radius: 50%;
+  transition: left 0.3s ease;
+  order: 2;
 }
 
-/* Icon color changes with mode */
-input:checked + .slider .sun {
-  color: white;
+.theme-toggle input[type="checkbox"]:checked + .toggle-label .slider {
+  left: 35px;
 }
 
-input:checked + .slider .moon {
-  color: white;
+.theme-toggle input[type="checkbox"]:checked + .toggle-label .moon {
+  color: #bbb;
 }
 
-/* Show sun icon when light mode (unchecked) */
-input:not(:checked) + .slider .sun {
-  display: inline-block;
-}
-
-/* Show moon icon when dark mode (checked) */
-input:checked + .slider .sun {
-  display: none;
-}
-
-input:not(:checked) + .slider .moon {
-  display: none;
-}
-
-input:checked + .slider .moon {
-  display: inline-block;
+.theme-toggle input[type="checkbox"]:checked + .toggle-label .sun {
+  color: var(--text-color);
 }
 
 /* Sidebar */
+
 .sidebar {
   width: 50px;
   background-color: var(--sidebar-color);
@@ -152,13 +126,10 @@ input:checked + .slider .moon {
   margin: 20px 0;
   cursor: pointer;
   color: var(--text-color);
+  /* Removed shaking or hover effects as requested */
 }
 
-.icon:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  padding: 5px;
-}
+/* Explorer */
 
 .explorer {
   width: 220px;
@@ -183,16 +154,17 @@ input:checked + .slider .moon {
   cursor: pointer;
   font-size: 13px;
   color: var(--text-color);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 .explorer li:hover {
-  background-color: var(--accent-color);
-  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* Main */
+
 .main {
-  flex: 1;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
@@ -204,30 +176,30 @@ input:checked + .slider .moon {
 }
 
 .tab {
-  padding: 8px 16px;
+  padding: 10px 15px;
   cursor: pointer;
-  font-size: 14px;
   color: var(--text-color);
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  user-select: none;
-}
-
-/* Fix active tab color in light mode */
-body.light .tab.active {
-  color: var(--text-color);
+  font-size: 13px;
+  border-right: 1px solid var(--border-color);
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.3s ease;
 }
 
 .tab.active {
   background-color: var(--tab-active);
-  font-weight: bold;
+  border-top: 2px solid var(--accent-color);
+  border-bottom: 3px solid var(--accent-color);
+  color: white;
 }
 
+/* Editor */
+
 .editor {
-  flex: 1;
-  background-color: var(--tab-active);
-  padding: 15px;
+  padding: 20px;
   overflow-y: auto;
+  flex-grow: 1;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 .tab-content {
@@ -238,32 +210,52 @@ body.light .tab.active {
   display: block;
 }
 
+/* Skills Grid */
+
 .skills-container {
   display: flex;
   gap: 20px;
+  margin-top: 10px;
 }
 
 .skills-column {
   flex: 1;
 }
 
-.skills-column h3 {
-  margin-top: 0;
-  color: var(--accent-color);
+.skills-column ul {
+  list-style: none;
+  padding-left: 0;
 }
+
+.skills-column li {
+  margin: 6px 0;
+}
+
+/* Terminal */
 
 .terminal {
   background-color: var(--terminal-bg);
   color: var(--terminal-text);
-  font-family: monospace;
-  font-size: 14px;
   padding: 10px;
+  height: 150px;
+  font-size: 13px;
   border-top: 1px solid var(--border-color);
-  height: 120px;
+  font-family: var(--font);
   overflow-y: auto;
 }
 
 .terminal-header {
   font-weight: bold;
   margin-bottom: 5px;
+  color: var(--accent-color);
+}
+
+.terminal-body {
+  white-space: pre-wrap;
+}
+
+/* Make moon icon more visible */
+
+.theme-toggle .toggle-label .moon {
+  filter: brightness(1.3);
 }
