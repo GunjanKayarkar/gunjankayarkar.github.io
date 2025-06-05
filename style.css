@@ -44,10 +44,76 @@ body {
   right: 10px;
   z-index: 100;
   font-size: 14px;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+#modeSwitch {
+  display: none;
+}
+
+.toggle-label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: var(--sidebar-color);
+  border-radius: 20px;
+  width: 60px;
+  height: 30px;
+  position: relative;
+  padding: 0 5px;
+  box-sizing: border-box;
+  color: var(--text-color);
+  transition: background-color 0.3s ease;
+}
+
+.icon {
+  font-size: 20px;
+  margin: 20px 0;
+  cursor: pointer;
+  color: var(--text-color);
+  user-select: none;
+}
+
+.icon:hover {
+  background: none;  /* Removed hover background to disable shaking effect */
+  transform: none;   /* No transform on hover */
+}
+
+.toggle-label svg.icon {
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.toggle-label .moon {
+  margin-right: 8px;
+}
+
+.toggle-label .sun {
+  margin-left: 8px;
+  color: #f39c12; /* gold/yellow color for sun */
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  transition: left 0.3s ease;
+}
+
+#modeSwitch:checked + .toggle-label {
+  background-color: var(--explorer-color);
+}
+
+#modeSwitch:checked + .toggle-label .toggle-slider {
+  left: 33px;
 }
 
 .sidebar {
@@ -58,19 +124,6 @@ body {
   align-items: center;
   padding-top: 10px;
   border-right: 1px solid var(--border-color);
-}
-
-.icon {
-  font-size: 20px;
-  margin: 20px 0;
-  cursor: pointer;
-  color: var(--text-color);
-}
-
-.icon:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  padding: 5px;
 }
 
 .explorer {
@@ -121,6 +174,7 @@ body {
   color: var(--text-color);
   font-size: 13px;
   border-right: 1px solid var(--border-color);
+  user-select: none;
 }
 
 .tab.active {
