@@ -9,6 +9,13 @@ function showTab(tabName) {
   document.getElementById('content-' + tabName).classList.add('active');
 }
 
-document.getElementById('modeSwitch').addEventListener('change', function () {
-  document.body.classList.toggle('light', this.checked);
+// Dark/light mode toggle with slider
+const modeSwitch = document.getElementById('modeSwitch');
+
+modeSwitch.addEventListener('change', () => {
+  if (modeSwitch.checked) {
+    document.body.classList.add('light');
+  } else {
+    document.body.classList.remove('light');
+  }
 });
