@@ -9,16 +9,6 @@ function showTab(tabName) {
   document.getElementById('content-' + tabName).classList.add('active');
 }
 
-// Dark/light mode toggle with slider and icons
-const modeSwitch = document.getElementById('modeSwitch');
-
-// Set initial checkbox state according to body class
-modeSwitch.checked = document.body.classList.contains('light');
-
-modeSwitch.addEventListener('change', () => {
-  if (modeSwitch.checked) {
-    document.body.classList.add('light');
-  } else {
-    document.body.classList.remove('light');
-  }
+document.getElementById('modeSwitch').addEventListener('change', function () {
+  document.body.classList.toggle('light', this.checked);
 });
