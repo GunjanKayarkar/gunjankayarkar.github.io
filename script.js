@@ -1,9 +1,14 @@
-const toggleBtn = document.getElementById('theme-toggle');
-const html = document.documentElement;
+function showTab(tabName) {
+  const tabs = document.querySelectorAll('.tab');
+  const contents = document.querySelectorAll('.tab-content');
 
-toggleBtn.addEventListener('click', () => {
-  const currentTheme = html.getAttribute('data-theme');
-  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-  html.setAttribute('data-theme', newTheme);
-  toggleBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+  tabs.forEach(tab => tab.classList.remove('active'));
+  contents.forEach(content => content.classList.remove('active'));
+
+  document.getElementById('tab-' + tabName).classList.add('active');
+  document.getElementById('content-' + tabName).classList.add('active');
+}
+
+document.getElementById('modeSwitch').addEventListener('change', function () {
+  document.body.classList.toggle('light', this.checked);
 });
