@@ -303,3 +303,14 @@ body {
   word-wrap: break-word;   /* break long words if needed */
   overflow-wrap: anywhere; /* modern way to ensure wrapping */
 }
+
+#content-terminal a {
+  color: inherit;           /* same color as normal text */
+  text-decoration: none;    /* remove underline */
+  font-weight: 500;         /* optional: make it stand out slightly */
+}
+
+#content-terminal a:hover {
+ /*  text-decoration: underline; show underline on hover for clarity */
+  color: #007acc;             /* VS Code-like blue hover */
+}
