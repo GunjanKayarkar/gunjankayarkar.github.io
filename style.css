@@ -48,7 +48,7 @@ body {
   user-select: none;
 }
 
-/* Slider Toggle */
+
 
 .theme-toggle input[type="checkbox"] {
   display: none;
@@ -109,7 +109,6 @@ body {
   color: var(--text-color);
 }
 
-/* Sidebar */
 
 .sidebar {
   width: 50px;
@@ -126,19 +125,16 @@ body {
   margin: 15px 0;
   cursor: pointer;
   color: var(--text-color);
-  /* Removed shaking or hover effects as requested */
 }
 
-/* Sidebar icons */
 .sidebar .icon .codicon {
-  font-size: 30px;   /* adjust here */
+  font-size: 30px;  
 }
 
 
 
 
 
-/* Explorer */
 
 .explorer {
   width: 220px;
@@ -170,7 +166,6 @@ body {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Main */
 
 .main {
   flex-grow: 1;
@@ -201,7 +196,6 @@ body {
   color: yellowgreen;
 }
 
-/* Editor */
 
 .editor {
   padding: 20px;
@@ -223,7 +217,6 @@ body {
   display: block;
 }
 
-/* Skills Grid */
 
 .skills-container {
   display: flex;
@@ -244,7 +237,6 @@ body {
   margin: 6px 0;
 }
 
-/* Terminal */
 
 .terminal {
   background-color: var(--terminal-bg);
@@ -267,52 +259,59 @@ body {
   white-space: pre-wrap;
 }
 
-/* Make moon icon more visible */
+
 
 .theme-toggle .toggle-label .moon {
   filter: brightness(1.3);
 }
 
-/* Certification links inside list items */
+
 #content-certifications ul li a {
-  color: inherit;           /* same color as normal text */
-  text-decoration: none;    /* remove underline */
-  font-weight: 500;         /* optional: make it stand out slightly */
+  color: inherit;          
+  text-decoration: none;   
+  font-weight: 500;      
 }
 
 #content-certifications ul li a:hover {
- /*  text-decoration: underline; show underline on hover for clarity */
-  color: #007acc;             /* VS Code-like blue hover */
+  color: #007acc;  
 }
 
 
 .sidebar a{
-  color: inherit;           /* same color as normal text */
-  text-decoration: none;    /* remove underline */
-  font-weight: 500;         /* optional: make it stand out slightly */
+  color: inherit;        
+  text-decoration: none;    
+  font-weight: 500;       
 }
 
 
 .sidebar a:hover{
- /*  text-decoration: underline; show underline on hover for clarity */
- color: #007acc;             /* VS Code-like blue hover */
+ color: #007acc;         
 }
 
 .editor p {
-  white-space: normal;     /* allow wrapping */
-  word-wrap: break-word;   /* break long words if needed */
-  overflow-wrap: anywhere; /* modern way to ensure wrapping */
+  white-space: normal;    
+  word-wrap: break-word;  
+  overflow-wrap: anywhere;
 }
 
 #content-terminal a {
-  color: inherit;           /* same color as normal text */
-  text-decoration: none;    /* remove underline */
-  font-weight: 500;         /* optional: make it stand out slightly */
+  color: inherit;          
+  text-decoration: none;    
+  font-weight: 500;         
 }
 
 #content-terminal a:hover {
+
+  color: #007acc;            
+}
+
+#content-projects ul li a {
+  color: inherit;          
+  text-decoration: none;    
+  font-weight: 500;      
+}
+
+#content-projects ul li a:hover {
  /*  text-decoration: underline; show underline on hover for clarity */
   color: #007acc;             /* VS Code-like blue hover */
 }
-
-
